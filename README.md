@@ -91,7 +91,24 @@ Inicie o servidor Flask:
 python -m src.calculadora_imc.api
 ```
 
-O servidor estará disponível em `http://localhost:5000`
+O servidor estará disponível em `http://127.0.0.1:5000` por padrão.
+
+#### Variáveis de Ambiente (Opcionais)
+
+Você pode configurar o servidor Flask usando variáveis de ambiente:
+
+```bash
+# Habilitar modo debug (não use em produção!)
+export FLASK_DEBUG=true
+
+# Configurar host (padrão: 127.0.0.1)
+export FLASK_HOST=0.0.0.0
+
+# Configurar porta (padrão: 5000)
+export FLASK_PORT=8080
+
+python -m src.calculadora_imc.api
+```
 
 #### Endpoints da API
 
