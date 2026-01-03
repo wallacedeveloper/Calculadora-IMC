@@ -140,21 +140,30 @@ HTML_TEMPLATE = """
                 
                 if (response.ok) {
                     resultDiv.className = 'result-success';
-                    resultDiv.innerHTML = `
-                        <strong>Resultado:</strong><br>
-                        IMC: ${data.imc}<br>
-                        Classificação: ${data.classificacao}
-                    `;
+                    // Set only static HTML; add dynamic content via textContent to avoid XSS
+                    resultDiv.innerHTML = '<strong>Resultado:</strong><br>';
+                    const imcDiv = document.createElement('div');
+                    imcDiv.textContent = `IMC: ${data.imc}`;
+                    resultDiv.appendChild(imcDiv);
+                    const classificacaoDiv = document.createElement('div');
+                    classificacaoDiv.textContent = `Classificação: ${data.classificacao}`;
+                    resultDiv.appendChild(classificacaoDiv);
                 } else {
                     resultDiv.className = 'result-error';
-                    resultDiv.innerHTML = `<strong>Erro:</strong> ${data.error}`;
+                    resultDiv.innerHTML = '<strong>Erro:</strong> ';
+                    const errorSpan = document.createElement('span');
+                    errorSpan.textContent = data.error;
+                    resultDiv.appendChild(errorSpan);
                 }
                 
                 resultDiv.style.display = 'block';
             } catch (error) {
                 const resultDiv = document.getElementById('result');
                 resultDiv.className = 'result-error';
-                resultDiv.innerHTML = `<strong>Erro:</strong> ${error.message}`;
+                resultDiv.innerHTML = '<strong>Erro:</strong> ';
+                const errorSpan = document.createElement('span');
+                errorSpan.textContent = error.message;
+                resultDiv.appendChild(errorSpan);
                 resultDiv.style.display = 'block';
             }
         });
