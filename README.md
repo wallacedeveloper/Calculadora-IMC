@@ -1,4 +1,4 @@
-# Calculadora de IMC (BMI Calculator)
+Calculadora de IMC (BMI Calculator)
 
 [![CI Tests](https://github.com/wallacedeveloper/Calculadora-IMC/actions/workflows/ci.yml/badge.svg)](https://github.com/wallacedeveloper/Calculadora-IMC/actions/workflows/ci.yml)
 [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
