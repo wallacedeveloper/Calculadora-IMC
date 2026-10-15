@@ -88,7 +88,7 @@ class IMCCalculatorGUI:
 def main():
     """Launch the GUI application."""
     root = tk.Tk()
-    app = IMCCalculatorGUI(root)
+    IMCCalculatorGUI(root)
     root.mainloop()
 
 
