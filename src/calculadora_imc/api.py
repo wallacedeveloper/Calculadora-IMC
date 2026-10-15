@@ -1,10 +1,12 @@
 """
 Flask API for BMI Calculator.
 """
+import os
 from flask import Flask, request, jsonify, render_template_string
 from .calculator import calcular_imc, classificar_imc
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", os.urandom(32))
 
 # Simple HTML template for the web interface
 HTML_TEMPLATE = """
