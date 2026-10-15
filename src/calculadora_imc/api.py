@@ -237,7 +237,8 @@ def health():
 def main():
     """Start the Flask application."""
     import os
-    debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
+    flask_debug = os.environ.get('FLASK_DEBUG')
+    debug_mode = str(flask_debug).strip().lower() in ('1', 'true', 'yes', 'on')
     host = os.environ.get('FLASK_HOST', '127.0.0.1')
     port = int(os.environ.get('FLASK_PORT', '5000'))
     
