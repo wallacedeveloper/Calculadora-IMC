@@ -224,7 +224,8 @@ def calcular():
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
     except Exception as e:
-        return jsonify({"error": f"Erro interno: {str(e)}"}), 500
+        app.logger.exception("Unhandled exception in calcular endpoint")
+        return jsonify({"error": "Erro interno no servidor. Tente novamente mais tarde."}), 500
 
 
 @app.route('/health')
